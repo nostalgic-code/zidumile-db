@@ -642,24 +642,71 @@ applications.</p>
         
                         <div class="">
                             <h4 class="mb-4">Apply For The Job</h4>
-                 <form id="applicationForm" enctype="multipart/form-data">
-    <div class="row g-3">
-        <div class="col-12 col-sm-6">
-            <input type="text" name="name" id="name" class="form-control" style="height:20px;" placeholder="Your Name" required>
+                <form id="applicationForm" enctype="multipart/form-data">
+    <!-- Candidate Summary and Skills Matrix -->
+    <div class="form-group">
+        <label for="candidate-summary">Candidate Summary:</label>
+        <textarea class="form-control" id="candidate-summary" name="candidate_summary" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="skills-matrix">Skills Matrix:</label>
+        <textarea class="form-control" id="skills-matrix" name="skills_matrix" rows="4" required></textarea>
+    </div>
+
+    <!-- Education (Institution Name and Degree/Qualification side by side) -->
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="institution">Institution Name:</label>
+            <input type="text" class="form-control" id="institution" name="institution" placeholder="Institution Name" required>
         </div>
-        <div class="col-12 col-sm-6">
-            <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
+        <div class="form-group col-md-6">
+            <label for="degree">Degree/Qualification:</label>
+            <input type="text" class="form-control" id="degree" name="degree" placeholder="Degree/Qualification" required>
         </div>
-        <div class="col-12 col-sm-6">
-            <input type="text" name="portfolio" id="portfolio" class="form-control" placeholder="Portfolio Website">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="field-of-study">Field of Study:</label>
+            <input type="text" class="form-control" id="field-of-study" name="field_of_study" placeholder="Field of Study" required>
         </div>
-        <div class="col-12 col-sm-6">
-            <input type="file" name="file" id="fileUpload" class="form-control bg-white" required>
+        <div class="form-group col-md-6">
+            <label for="completion-year">Year of Completion:</label>
+            <input type="text" class="form-control" id="completion-year" name="completion_year" placeholder="Year of Completion" required>
         </div>
-        <input type="hidden" name="_gotcha" style="display:none !important">
-        <div class="col-12">
-            <button class="btn btn-primary w-100" type="submit" id="submitBtn">Apply Now</button>
+    </div>
+
+    <!-- Experience (Company, Role, Start Date, End Date side by side) -->
+    <div id="experience-section">
+        <label>Experience:</label>
+        <div class="experience-entry form-row mb-3">
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" name="company[]" placeholder="Company" required>
+            </div>
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" name="role[]" placeholder="Role" required>
+            </div>
+            <div class="form-group col-md-3">
+                <input type="date" class="form-control" name="start_date[]" required>
+            </div>
+            <div class="form-group col-md-3">
+                <input type="date" class="form-control" name="end_date[]" placeholder="End Date">
+            </div>
+            <div class="form-group col-md-12">
+                <label>
+                    <input type="checkbox" name="currently_working[]" value="1"> Currently Working Here
+                </label>
+            </div>
         </div>
+        <button type="button" class="btn btn-secondary mb-3" onclick="addExperience()">Add Other Experience</button>
+    </div>
+
+    <!-- File Upload and Submit -->
+    <div class="form-group">
+        <label for="fileUpload">Upload Your CV:</label>
+        <input type="file" name="file" id="fileUpload" class="form-control bg-white" required>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Apply Now</button>
     </div>
 </form>
 
